@@ -12,9 +12,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Justice for the 99% - The New Civil Rights Movement",
-  description: "Decouple money from justice. Universal Legal Care and auditable AI-assisted adjudication.",
+  description:
+    "Decouple money from justice. Universal Legal Care and auditable AI-assisted adjudication.",
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
 export default function RootLayout({
