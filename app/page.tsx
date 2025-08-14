@@ -1,103 +1,155 @@
-import Image from "next/image";
+// app/page.tsx
+"use client";
+
+import { useEffect, useRef } from "react";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const emailRef = useRef<HTMLInputElement | null>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handleJoin = () => {
+    const email = emailRef.current?.value?.trim() || "";
+    if (email && email.includes("@")) {
+      alert("Thank you for joining the movement! We will be in touch soon.");
+      if (emailRef.current) emailRef.current.value = "";
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  };
+
+  // simple fade-in on scroll
+  useEffect(() => {
+    const onScroll = () => {
+      document.querySelectorAll<HTMLElement>(".stat, .pillar").forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) el.classList.add("fade-in");
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <>
+      <header>
+        <nav className="container">
+          <div className="logo">Justice for the 99%</div>
+          <a href="#join" className="cta-button">Join the Movement</a>
+        </nav>
+      </header>
+
+      <section className="hero">
+        <div className="container">
+          <h1>Hijacking of a Constitutional Right</h1>
+          <div className="subtitle">Justice Has Been Sold to the Highest Bidder</div>
+          <p>
+            The wealthy elite have rigged our justice system against ordinary Americans. While they buy their way out
+            of consequences, the 99% are denied their constitutional rights. It's time to take back justice.
+          </p>
+          <a href="#join" className="btn-primary">Join the Fight for Justice</a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      <section className="problem">
+        <div className="container">
+          <h2 className="section-title">The System is Rigged</h2>
+          <p className="section-subtitle">While the 1% buy justice, the 99% are left defenseless</p>
+
+          <div className="problem-stats">
+            <div className="stat">
+              <span className="stat-number">80%</span>
+              <div className="stat-label">can&apos;t afford legal representation</div>
+            </div>
+            <div className="stat">
+              <span className="stat-number">95%</span>
+              <div className="stat-label">of cases never reach trial</div>
+            </div>
+            <div className="stat">
+              <span className="stat-number">$400B</span>
+              <div className="stat-label">lost annually to rigged justice</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="solution">
+        <div className="container">
+          <div className="solution-content">
+            <h2>Universal Justice</h2>
+            <div className="highlight">The New Civil Rights Movement</div>
+            <div className="solution-text">
+              We&apos;re building a movement to restore constitutional rights for all Americans. Our plan combines
+              grassroots organizing, legal reform, and cutting-edge technology to decouple money from justice once and
+              for all.
+            </div>
+
+            <div className="solution-pillars">
+              <div className="pillar">
+                <h3>🛡️ Universal Legal Care</h3>
+                <p>Legal representation should be a right, not a privilege. Every American deserves access to quality legal defense.</p>
+              </div>
+              <div className="pillar">
+                <h3>⚖️ Unbiased AI Justice</h3>
+                <p>AI adjudication can reduce corruption and bias when implemented with transparency and oversight, ensuring fair and consistent outcomes for everyone.</p>
+              </div>
+              <div className="pillar">
+                <h3>🤝 Cross-Partisan Unity</h3>
+                <p>This isn&apos;t left vs right—it's the 99% vs the rigged system. Constitutional rights unite us all.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="join" className="final-cta">
+        <div className="container">
+          <h2>Join the Movement</h2>
+          <p>Every day we wait, more Americans lose their constitutional rights to a rigged system. The time for change is NOW.</p>
+
+          <div className="email-signup">
+            <input ref={emailRef} type="email" className="email-input" placeholder="Enter your email to join the fight" />
+            <button className="signup-btn" onClick={handleJoin}>JOIN NOW</button>
+          </div>
+
+          <a href="#" className="btn-primary">Share Our Mission</a>
+        </div>
+      </section>
+
+      <footer>
+        <div className="container">
+          <div className="footer-content">
+            <div className="footer-section">
+              <h3>The Movement</h3>
+              <a href="#">About Universal Justice</a>
+              <a href="#">Our Story</a>
+              <a href="#">Coalition Partners</a>
+              <a href="#">Press Kit</a>
+            </div>
+            <div className="footer-section">
+              <h3>Take Action</h3>
+              <a href="#">Volunteer</a>
+              <a href="#">Donate</a>
+              <a href="#">Share Your Story</a>
+              <a href="#">Contact Representatives</a>
+            </div>
+            <div className="footer-section">
+              <h3>Resources</h3>
+              <a href="#">Research &amp; Data</a>
+              <a href="#">Cycle Clock Theory</a>
+              <a href="#">Legal Reform Proposals</a>
+              <a href="#">AI Justice White Papers</a>
+            </div>
+            <div className="footer-section">
+              <h3>Connect</h3>
+              <a href="#">Newsletter</a>
+              <a href="#">Twitter/X</a>
+              <a href="#">YouTube</a>
+              <a href="#">LinkedIn</a>
+            </div>
+          </div>
+          <p>&copy; {new Date().getFullYear()} Justice for the 99%. The fight for constitutional rights continues.</p>
+        </div>
       </footer>
-    </div>
+    </>
   );
 }
