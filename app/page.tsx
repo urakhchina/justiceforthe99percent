@@ -94,7 +94,7 @@ export default function Home() {
               </div>
               <div className="pillar">
                 <h3>🤝 Cross-Partisan Unity</h3>
-                <p>This isn&apos;t left vs right—it's the 99% vs the rigged system. Constitutional rights unite us all.</p>
+                <p>This isn&apos;t left vs right—it&apos;s the 99% vs the rigged system. Constitutional rights unite us all.</p>
               </div>
             </div>
           </div>
