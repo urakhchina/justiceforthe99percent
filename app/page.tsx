@@ -134,8 +134,20 @@ export default function Home() {
             </div>
             <div className="footer-section">
               <h3>Resources</h3>
-              <a href="#">Research &amp; Data</a>
-              <a href="#">Cycle Clock Theory</a>
+              <a
+                href="https://quantumgravityresearch.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research &amp; Data
+              </a>
+              <a
+                href="https://quantumgravityresearch.org/cct-book/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Cycle Clock Theory
+              </a>
               <a href="#">Legal Reform Proposals</a>
               <a href="#">AI Justice White Papers</a>
             </div>
