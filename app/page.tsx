@@ -43,8 +43,8 @@ export default function Home() {
           <h1>Hijacking of a Constitutional Right</h1>
           <div className="subtitle">Justice Has Been Sold to the Highest Bidder</div>
           <p>
-            The wealthy elite have rigged our justice system against ordinary Americans. While they buy their way out
-            of consequences, the 99% are denied their constitutional rights. It's time to take back justice.
+          The wealthy elite have rigged our justice system … the 99% are denied their constitutional rights. 
+          It&apos;s time to take back justice.
           </p>
           <a href="#join" className="btn-primary">Join the Fight for Justice</a>
         </div>
